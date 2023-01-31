@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 void main() {
   runApp(const FlutterShowPasswordApp());
@@ -42,6 +43,13 @@ class _LoginScreenState extends State<LoginScreen>
     parent: lightAnimationController,
     curve: Curves.ease,
   );
+
+  @override
+  void initState() {
+    SystemChrome.setSystemUIOverlayStyle(
+        const SystemUiOverlayStyle(statusBarColor: Colors.black));
+    super.initState();
+  }
 
   @override
   void dispose() {
@@ -234,12 +242,14 @@ class _LightSwitchState extends State<_LightSwitch>
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        SizedBox(
-          height: 30,
+        const SizedBox(
+          height: 25,
           width: 120,
           child: DecoratedBox(
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(50),
+              borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(10),
+                  bottomRight: Radius.circular(10)),
               color: Colors.black,
             ),
           ),

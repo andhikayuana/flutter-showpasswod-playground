@@ -96,10 +96,15 @@ class _LoginScreenState extends State<LoginScreen>
                       hintText: 'Username',
                     ),
                     const SizedBox(height: 20),
-                    _InputText(
-                      controller: passwordController,
-                      hintText: 'Password',
-                      obsecureText: !lightOn,
+                    AnimatedSwitcher(
+                      duration: const Duration(milliseconds: 600),
+                      switchInCurve: Curves.bounceInOut,
+                      child: _InputText(
+                        key: ValueKey(lightOn),
+                        controller: passwordController,
+                        hintText: 'Password',
+                        obsecureText: !lightOn,
+                      ),
                     ),
                     const SizedBox(height: 20),
                     SizedBox(
@@ -248,8 +253,9 @@ class _LightSwitchState extends State<_LightSwitch>
           child: DecoratedBox(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(10),
-                  bottomRight: Radius.circular(10)),
+                bottomLeft: Radius.circular(10),
+                bottomRight: Radius.circular(10),
+              ),
               color: Colors.black,
             ),
           ),

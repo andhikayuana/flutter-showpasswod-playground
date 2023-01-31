@@ -14,6 +14,7 @@ class FlutterShowPasswordApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Show Password Playground',
       theme: ThemeData.dark(),
+      debugShowCheckedModeBanner: false,
       home: const LoginScreen(),
     );
   }
